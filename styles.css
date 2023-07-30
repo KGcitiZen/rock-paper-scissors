@@ -1,0 +1,81 @@
+:root {
+  font-size: 16px;
+}
+
+body {
+  background-color: #ff9de9;
+  display: flex;
+  height: 100vh;
+  margin-inline: auto 3%;
+  width: 90%;
+}
+
+.container {
+  display: flex;
+  flex: 1 1 35vw;
+  align-self: center;
+  gap: 25px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+  color: #fff;
+  text-shadow: 0.5rem 0.5rem 0 #000;
+  -webkit-text-stroke: 0.15rem #000;
+  font-family: 'Seymour One';
+  font-size: 5.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.55rem;
+}
+
+.buttonText {
+  color: #000;
+  font-family: Shrikhand;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.buttonLink {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border: 2px solid #000;
+  background: #fff;
+  box-shadow: 8px 8px 0px 0px #000, 4px -7px 0px 0px #fd73de inset;
+}
+
+.buttonLink:hover {
+  border: 2px solid #000;
+  background: #fff;
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0px 0px #000, 4px -7px 0px 0px #c2c2c2 inset;
+}
+
+.description {
+  margin: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.12rem;
+}
+
+.hands-img {
+  display: flex;
+  flex: 2 1 40vw;
+  height: 80vh;
+  align-self: flex-end;
+}
