@@ -4,10 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>←Rock←Paper←Scissors←</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Seymour+One&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="./../normalize.css" />
     <link rel="stylesheet" href="./style.css" />
-    <!-- <script src="./main.js" defer></script> -->
+    <!-- JavaScript -->
+    <script src="./main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="scores">
+      <div id="computerScore">
+        <h2 class="score">0</h2>
+        <p class="scoreName">AI</p>
+      </div>
+      <div id="playerScore">
+        <h2 class="score">0</h2>
+        <p class="scoreName">YOU</p>
+      </div>
+    </div>
+
+    <div class="handBtns">
+      <div class="handBtn">
+        <img src="./../images/buttonRock.png" alt="button choice rock" />
+      </div>
+      <div class="handBtn">
+        <img src="./../images/buttonPaper.png" alt="button choice paper" />
+      </div>
+      <div class="handBtn">
+        <img
+          src="./../images/buttonScissors.png"
+          alt="button choice scissors"
+        />
+      </div>
+    </div>
+
+    <div class="computerHand">
+      <img src="./../images/ai-arm/AI Arm Idle.png" alt="" />
+    </div>
+    <div class="playerHand">
+      <img src="./../images/human-arm/Human Arm Idle.png" alt="" />
+    </div>
+
+    <div class="resultBox">
+      <h2 class="resultTitle">IT'S A DRAW</h2>
+      <div class="resultButtons">
+        <div>
+          <button class="resultButton">Next round</button>
+        </div>
+        <div>
+          <button class="resultButton">Restart</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

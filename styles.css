@@ -58,6 +58,8 @@ h1 {
   border: 2px solid #000;
   background: #fff;
   cursor: pointer;
+  transform: rotate(-1deg);
+  border-radius: 10px;
 
   box-shadow: 4px 4px 0px 0px #000, 4px -7px 0px 0px #c2c2c2 inset;
 }

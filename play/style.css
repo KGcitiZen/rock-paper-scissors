@@ -1,0 +1,139 @@
+:root {
+  font-size: 16px;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #9dcaff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.scores {
+  display: flex;
+  margin-top: 40px;
+  min-width: 40vw;
+  justify-content: center;
+  gap: 10vw;
+}
+
+.score {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0.5rem 0.5rem 0 #000;
+  -webkit-text-stroke: 0.15rem #000;
+  font-family: 'Seymour One';
+  font-size: 10rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.scoreName {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0.5rem 0.5rem 0 #000;
+  font-family: Seymour One;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3rem;
+}
+
+.handBtns {
+  display: flex;
+  width: 13.875rem;
+  height: 13.875rem;
+  flex-shrink: 0;
+  border-radius: 31.25rem;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 10vh;
+  gap: 3vw;
+}
+
+.handBtns img:hover {
+  filter: drop-shadow(0.5rem 0.5rem 0 #000);
+  transform: rotate(-10deg);
+  cursor: pointer;
+}
+
+.handBtn img:active {
+  filter: brightness(90%);
+  transform: scale(0.98);
+}
+
+.computerHand {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.playerHand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.resultBox {
+  margin: auto 0 10vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.resultTitle {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0.5rem 0.5rem 0 #000;
+  -webkit-text-stroke: 0.15rem #000;
+  font-family: 'Seymour One';
+  align-self: flex-end;
+  font-size: 6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.6rem;
+}
+
+.resultButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.resultButton {
+  color: #000;
+  font-family: 'Shrikhand';
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  flex-shrink: 0;
+  border: 2px solid #000;
+  background: #fff;
+  box-shadow: 4px 4px 0px 0px #000, 4px -7px 0px 0px #c2c2c2 inset;
+}
+
+.resultButton:hover {
+  color: #fff;
+  background: #3d3d3d;
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0px 0px #000, 4px -7px 0px 0px #c2c2c2 inset;
+  transform: rotate(-2deg);
+  border-radius: 5px;
+}
