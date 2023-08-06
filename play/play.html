@@ -19,25 +19,34 @@
   </head>
   <body>
     <div class="scores">
-      <div id="computerScore">
-        <h2 class="score">0</h2>
+      <div>
+        <h2 id="computerScore" class="score">0</h2>
         <p class="scoreName">AI</p>
       </div>
-      <div id="playerScore">
-        <h2 class="score">0</h2>
+      <div>
+        <h2 id="playerScore" class="score">0</h2>
         <p class="scoreName">YOU</p>
       </div>
     </div>
 
-    <div class="handBtns">
+    <div class="handBtns" id="handBtns">
       <div class="handBtn">
-        <img src="./../images/buttonRock.png" alt="button choice rock" />
-      </div>
-      <div class="handBtn">
-        <img src="./../images/buttonPaper.png" alt="button choice paper" />
+        <img
+          data-hand="rock"
+          src="./../images/buttonRock.png"
+          alt="button choice rock"
+        />
       </div>
       <div class="handBtn">
         <img
+          data-hand="paper"
+          src="./../images/buttonPaper.png"
+          alt="button choice paper"
+        />
+      </div>
+      <div class="handBtn">
+        <img
+          data-hand="scissors"
           src="./../images/buttonScissors.png"
           alt="button choice scissors"
         />
@@ -45,20 +54,24 @@
     </div>
 
     <div class="computerHand">
-      <img src="./../images/ai-arm/AI Arm Idle.png" alt="" />
+      <img id="computerHand" src="./../images/ai-arm/ai-arm-down.png" alt="" />
     </div>
     <div class="playerHand">
-      <img src="./../images/human-arm/Human Arm Idle.png" alt="" />
+      <img
+        id="playerHand"
+        src="./../images/human-arm/human-arm-down.png"
+        alt=""
+      />
     </div>
 
     <div class="resultBox">
       <h2 class="resultTitle">IT'S A DRAW</h2>
       <div class="resultButtons">
         <div>
-          <button class="resultButton">Next round</button>
+          <button id="nextRoundButton" class="resultButton">Next round</button>
         </div>
         <div>
-          <button class="resultButton">Restart</button>
+          <button id="restartButton" class="resultButton">Restart</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,115 @@
-//? returns 'rock', 'paper', or 'scissors' string.
+// Initialize score count in sessionStorage
+if (!sessionStorage.getItem('playerScore')) {
+  sessionStorage.setItem('playerScore', '0');
+}
+if (!sessionStorage.getItem('computerScore')) {
+  sessionStorage.setItem('computerScore', '0');
+}
+
+// Display score values on the top
+const computerScoreElement = document.getElementById('computerScore');
+const playerScoreElement = document.getElementById('playerScore');
+computerScoreElement.textContent = sessionStorage.getItem('computerScore');
+playerScoreElement.textContent = sessionStorage.getItem('playerScore');
+
+const buttons = document.getElementById('handBtns');
+buttons.addEventListener('mouseup', startRound);
+
+function startRound(e) {
+  // randomly creates a string ('rock', 'scissors', or 'paper')
+  const computerChoice = getComputerChoice();
+  // gets clicked btn's data-hand value ('rock', 'scissors', or 'paper')
+  const playerChoice = e.target.getAttribute('data-hand');
+
+  const computerHand = document.getElementById('computerHand');
+  const playerHand = document.getElementById('playerHand');
+
+  // hide buttons after click
+  buttons.style['display'] = 'none';
+
+  function animateSwap() {
+    computerHand.setAttribute('src', './../images/ai-arm/ai-arm-down.png');
+    playerHand.setAttribute('src', './../images/human-arm/human-arm-down.png');
+
+    setTimeout(() => {
+      computerHand.setAttribute('src', './../images/ai-arm/ai-arm-up.png');
+      playerHand.setAttribute('src', './../images/human-arm/human-arm-up.png');
+    }, 200);
+  }
+
+  // somehow works lul
+  function repeatAnimation(totalRepetitions, interval) {
+    let repetitions = 0;
+
+    function runAnimation() {
+      animateSwap();
+      repetitions++;
+
+      if (repetitions < totalRepetitions) {
+        setTimeout(runAnimation, interval);
+      }
+    }
+    runAnimation();
+  }
+
+  repeatAnimation(3, 600);
+
+  setTimeout(() => {
+    computerHand.setAttribute(
+      'src',
+      `./../images/ai-arm/ai-arm-${computerChoice}.png`
+    );
+    playerHand.setAttribute(
+      'src',
+      `./../images/human-arm/human-arm-${playerChoice}.png`
+    );
+  }, 1500);
+
+  setTimeout(() => {
+    setRoundResult(computerChoice, playerChoice);
+  }, 2000);
+}
+
+function setRoundResult(computerChoice, playerChoice) {
+  const resultTextContainer = document.querySelector('.resultBox');
+  // initially container's display: none
+  resultTextContainer.style['display'] = 'flex';
+  let resultTextTitle = resultTextContainer.firstElementChild;
+
+  switch (true) {
+    case computerChoice === playerChoice:
+      resultTextTitle.textContent = 'DRAW!';
+      break;
+    case playerChoice === 'rock' && computerChoice === 'scissors':
+    case playerChoice === 'paper' && computerChoice === 'rock':
+    case playerChoice === 'scissors' && computerChoice === 'paper':
+      let currentPlayerScore = sessionStorage.getItem('playerScore');
+      currentPlayerScore = parseInt(currentPlayerScore) + 1;
+      sessionStorage.setItem('playerScore', `${currentPlayerScore}`);
+      resultTextTitle.textContent = 'YOU WIN!';
+
+      if (currentPlayerScore >= 5) {
+        gameResult('GAME WON!');
+      }
+      break;
+    case computerChoice === 'rock' && playerChoice === 'scissors':
+    case computerChoice === 'paper' && playerChoice === 'rock':
+    case computerChoice === 'scissors' && playerChoice === 'paper':
+      let currentComputerScore = sessionStorage.getItem('computerScore');
+      currentComputerScore = parseInt(currentComputerScore) + 1;
+      sessionStorage.setItem('computerScore', `${currentComputerScore}`);
+      resultTextTitle.textContent = 'YOU LOSE!';
+
+      if (currentComputerScore >= 5) {
+        gameResult('GAME OVER!');
+      }
+      break;
+    default:
+      return 'Something went wrong';
+  }
+}
+
+// returns randomly 'rock', 'paper', or 'scissors' string.
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * 3) + 1;
 
@@ -14,51 +125,20 @@ function getComputerChoice() {
   }
 }
 
-//? Input --> 1. (optional) Player selection, string
-//? Input --> 2. (optional) Computer selection, string
-//? Return --> Alert winner message (or draft), string
-function startRound(
-  playerSelection = prompt('Rock, paper, or scissors? Type your move: '),
-  computerSelection = getComputerChoice()
-) {
-  let ps = playerSelection.toLowerCase();
-  let cs = computerSelection;
+const gameResult = (message) => {
+  let resultTitle = document.querySelector('.resultTitle');
+  resultTitle.textContent = message;
+  sessionStorage.clear();
+  nextRoundButton.style.display = 'none';
+};
 
-  switch (true) {
-    case ps === cs:
-      return 'Draft!';
-    case ps === 'rock' && cs === 'scissors':
-      return 'You win! Rock beats Scissors';
-    case ps === 'paper' && cs === 'rock':
-      return 'You win! Paper beats Rock';
-    case ps === 'scissors' && cs === 'paper':
-      return 'You win! Scissors beats Paper';
-    case cs === 'rock' && ps === 'scissors':
-      return 'You lose! Rock beats Scissors';
-    case cs === 'paper' && ps === 'rock':
-      return 'You lose! Paper beats Rock';
-    case cs === 'scissors' && ps === 'paper':
-      return 'You lose! Scissors beats Paper';
-    default:
-      return 'Something went wrong';
-  }
-}
+const restartButton = document.getElementById('restartButton');
+restartButton.addEventListener('click', () => {
+  sessionStorage.clear();
+  location.reload();
+});
 
-//? Input --> (optional) number of rounds, integer
-//? Output --> 1. Alert round winner message, string
-//? Output --> 2. Alert game winner message, string
-function game() {
-  let getRoundWinner = (str) => {
-    if (str.includes('win')) {
-      return 'Player';
-    } else if (str.includes('lose')) {
-      return 'Computer';
-    } else return 'No one';
-  };
-
-  let roundResultMessage = startRound();
-
-  alert(`${roundResultMessage}`);
-}
-
-game();
+const nextRoundButton = document.getElementById('nextRoundButton');
+nextRoundButton.addEventListener('click', () => {
+  location.reload();
+});
